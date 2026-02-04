@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iglesia - Ser y hacer discípulos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #5DADE2;
+            --deep-blue: #2E5F7A;
+            --accent-light: #A8DAED;
+            --dark-bg: #0A1929;
+            --text-light: #F8F9FA;
+            --text-muted: #B8C5D3;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a2942 100%);
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(93, 173, 226, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(46, 95, 122, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header & Hero */
+        header {
+            padding: 2rem 0;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            filter: drop-shadow(0 4px 12px rgba(93, 173, 226, 0.3));
+            animation: floatLogo 3s ease-in-out infinite;
+        }
+
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0 6rem;
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        .lema {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+            margin: 2rem auto;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            margin: 0 0 6rem;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        .cta-content {
+            background: linear-gradient(135deg, rgba(93, 173, 226, 0.15), rgba(46, 95, 122, 0.15));
+            border: 2px solid var(--primary-blue);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(93, 173, 226, 0.1) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
+        }
+
+        .cta-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--text-light);
+            max-width: 900px;
+            margin: 0 auto 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-blue), var(--deep-blue));
+            color: white;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 25px rgba(93, 173, 226, 0.4);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(93, 173, 226, 0.6);
+            background: linear-gradient(135deg, var(--accent-light), var(--primary-blue));
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        /* Map Container */
+        .map-container {
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .map-container iframe {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .map-container iframe:hover {
+            transform: scale(1.01);
+        }
+
+        /* Main Sections */
+        .section {
+            margin: 5rem 0;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.3s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.5s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.7s; }
+        .section:nth-child(6) { animation-delay: 0.8s; }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-blue);
+            margin: 1rem auto 0;
+        }
+
+        /* Card Styles */
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(93, 173, 226, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(93, 173, 226, 0.3);
+            box-shadow: 0 12px 40px rgba(93, 173, 226, 0.15);
+        }
+
+        .card-text {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .grid-5 {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Custom grids for better distribution */
+        .grid-valores {
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+        }
+
+        .grid-propositos {
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+        }
+
+        .grid-ministerios {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* Icon Items for Propósitos */
+        .icon-item {
+            background: rgba(93, 173, 226, 0.05);
+            border: 1px solid rgba(93, 173, 226, 0.2);
+            border-radius: 15px;
+            padding: 2rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .icon-item:hover {
+            transform: translateY(-8px);
+            background: rgba(93, 173, 226, 0.1);
+            border-color: var(--primary-blue);
+            box-shadow: 0 8px 25px rgba(93, 173, 226, 0.2);
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: grayscale(0.3);
+            transition: all 0.3s ease;
+        }
+
+        .icon-bi {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .icon-item:hover .icon {
+            filter: grayscale(0);
+            transform: scale(1.15);
+        }
+
+        .icon-item:hover .icon-bi {
+            transform: scale(1.2);
+            color: var(--accent-light);
+        }
+
+        .icon-item-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* Ministry Items */
+        .ministry-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(93, 173, 226, 0.05);
+            border: 1px solid rgba(93, 173, 226, 0.15);
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .ministry-item:hover {
+            transform: translateX(8px);
+            background: rgba(93, 173, 226, 0.1);
+            border-color: var(--primary-blue);
+        }
+
+        .ministry-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .ministry-bi-icon {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .ministry-item:hover .ministry-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .ministry-item:hover .ministry-bi-icon {
+            transform: scale(1.2);
+            color: var(--accent-light);
+        }
+
+        .ministry-name {
+            color: var(--text-light);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .item {
+            background: rgba(93, 173, 226, 0.05);
+            border: 1px solid rgba(93, 173, 226, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--deep-blue));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .item:hover {
+            transform: translateX(5px);
+            background: rgba(93, 173, 226, 0.08);
+            border-color: var(--primary-blue);
+        }
+
+        .item-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .item-text {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* List Styles */
+        .value-list, .ministry-list {
+            list-style: none;
+        }
+
+        .value-list li, .ministry-list li {
+            padding: 1rem 1.5rem;
+            margin: 0.8rem 0;
+            background: rgba(93, 173, 226, 0.05);
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: var(--text-light);
+        }
+
+        .value-list li:hover, .ministry-list li:hover {
+            background: rgba(93, 173, 226, 0.1);
+            transform: translateX(10px);
+            border-left-color: var(--accent-light);
+        }
+
+        /* Value Icon Items */
+        .value-icon-item {
+            background: rgba(93, 173, 226, 0.05);
+            border: 1px solid rgba(93, 173, 226, 0.2);
+            border-radius: 15px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-icon-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--deep-blue));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .value-icon-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .value-icon-item:hover {
+            transform: translateY(-10px);
+            background: rgba(93, 173, 226, 0.12);
+            border-color: var(--primary-blue);
+            box-shadow: 0 12px 30px rgba(93, 173, 226, 0.25);
+        }
+
+        .value-bi-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.2rem;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .value-icon-item:hover .value-bi-icon {
+            transform: scale(1.15) rotateY(360deg);
+            color: var(--accent-light);
+        }
+
+        .value-icon-title {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        /* Simple Items - Clean icon + title layout */
+        .simple-item {
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 1rem;
+        }
+
+        .simple-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .simple-icon {
+            font-size: 3.5rem;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+            filter: grayscale(0.2);
+        }
+
+        .simple-item:hover .simple-icon {
+            transform: scale(1.15);
+            filter: grayscale(0);
+        }
+
+        .simple-title {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* Cultos Section */
+        .cultos-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .culto-card {
+            background: linear-gradient(135deg, rgba(93, 173, 226, 0.1), rgba(46, 95, 122, 0.1));
+            border: 2px solid var(--primary-blue);
+            border-radius: 20px;
+            padding: 2.5rem 3rem;
+            text-align: center;
+            min-width: 250px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .culto-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(93, 173, 226, 0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .culto-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(93, 173, 226, 0.3);
+        }
+
+        .culto-day {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .culto-time {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Address Section */
+        .address-card {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(93, 173, 226, 0.15), rgba(46, 95, 122, 0.15));
+            border: 2px solid var(--primary-blue);
+            border-radius: 25px;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .address-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .address-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--text-light);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(93, 173, 226, 0.2);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .grid-valores {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .grid-propositos {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .grid-ministerios {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .lema {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 2rem;
+            }
+
+            .cultos-container {
+                gap: 1.5rem;
+            }
+
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-valores {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-propositos {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .grid-ministerios {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-5 {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 1rem;
+            }
+
+            .icon-item {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .icon {
+                font-size: 2.5rem;
+            }
+
+            .icon-bi {
+                font-size: 2.5rem;
+            }
+
+            .value-bi-icon {
+                font-size: 2.5rem;
+            }
+
+            .value-icon-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .value-icon-title {
+                font-size: 1rem;
+            }
+
+            .simple-item {
+                padding: 0.8rem;
+            }
+
+            .simple-icon {
+                font-size: 3rem;
+            }
+
+            .simple-title {
+                font-size: 0.95rem;
+            }
+
+            .icon-item-title {
+                font-size: 1rem;
+            }
+
+            .ministry-item {
+                padding: 1rem 1.2rem;
+            }
+
+            .ministry-icon {
+                font-size: 1.8rem;
+            }
+
+            .ministry-bi-icon {
+                font-size: 1.8rem;
+            }
+
+            .ministry-name {
+                font-size: 0.95rem;
+            }
+
+            .cta-content {
+                padding: 3rem 2rem;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .cta-text {
+                font-size: 1.1rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Scroll animations trigger */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="logoiglesia.png" alt="Logo Iglesia" class="logo">
+            </div>
+        </header>
+
+        <section class="hero">
+            <h1 class="lema">Ser y hacer discípulos</h1>
+            <div class="divider"></div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Todos son Bienvenidos</h2>
+                <p class="cta-text">
+                    No importa de dónde vengas o cuál sea tu historia, aquí encontrarás una familia que te recibirá con los brazos abiertos. 
+                    Ven tal como eres y experimenta el amor transformador de Cristo. Nuestra comunidad está esperándote para caminar juntos 
+                    en este hermoso viaje de fe. ¡Tu lugar está aquí!
+                </p>
+                <a href="#ubicacion" class="cta-button">Visítanos Este Domingo</a>
+            </div>
+        </section>
+
+        <main>
+            <!-- Cultos -->
+            <section class="section" id="horarios">
+                <h2 class="section-title">Horarios de Culto</h2>
+                <div class="cultos-container">
+                    <div class="culto-card">
+                        <div class="culto-day">Miércoles</div>
+                        <div class="culto-time">7:00 PM</div>
+                    </div>
+                    <div class="culto-card">
+                        <div class="culto-day">Domingo</div>
+                        <div class="culto-time">8:00 AM</div>
+                    </div>
+                    <div class="culto-card">
+                        <div class="culto-day">Domingo</div>
+                        <div class="culto-time">10:00 AM</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dirección -->
+            <section class="section" id="ubicacion">
+                <h2 class="section-title">Cómo Llegar</h2>
+                <div class="address-card">
+                    <div class="address-icon">📍</div>
+                    <div class="address-text">Calle 20D #43-43</div>
+                    <div class="map-container">
+                        <!-- Inserta aquí tu URL de Google Maps -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.662504715159!2d-75.55319881373755!3d6.307994145864686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e442f3fa9391a6b%3A0x42ca776feeeef092!2sCl.%2020d%20%23%2043-43%2C%20Zamora%2C%20Medell%C3%ADn%2C%20Bello%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1770236113267!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            width="100%" 
+                            height="400" 
+                            style="border:0; border-radius: 15px; margin-top: 2rem;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Misión -->
+            <section class="section">
+                <h2 class="section-title">Misión</h2>
+                <div class="card">
+                    <p class="card-text">
+                        Somos y hacemos Discípulos de Cristo por medio de la palabra de Dios, impulsándolos a cumplir con excelencia el gran mandamiento y la gran comisión a través de la paternidad espiritual, grupos pequeños y celebraciones de adoración; discipulando así a las familias del sector y el área metropolitana.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Visión -->
+            <section class="section">
+                <h2 class="section-title">Visión</h2>
+                <div class="card">
+                    <p class="card-text">
+                        Ser una Iglesia misionera, madura y en crecimiento, con ministerios de excelencia, impulsando discípulos comprometidos con la extensión del reino de Dios en su comunidad y fuera de ella, plantando Iglesias con un alcance nacional, internacional y transcultural.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Valores -->
+            <section class="section">
+                <h2 class="section-title">Valores</h2>
+                <div class="grid grid-valores">
+                    <div class="simple-item">
+                        <div class="simple-icon">❤️</div>
+                        <h3 class="simple-title">Amor a Dios y al prójimo</h3>
+                    </div>
+                    <div class="simple-item">
+                        <div class="simple-icon">📣</div>
+                        <h3 class="simple-title">Evangelismo como estilo de vida</h3>
+                    </div>
+                    <div class="simple-item">
+                        <div class="simple-icon">✝️</div>
+                        <h3 class="simple-title">Hacer Discípulos como propósito</h3>
+                    </div>
+                    <div class="simple-item">
+                        <div class="simple-icon">🙏</div>
+                        <h3 class="simple-title">Oración como motor de la relación con Dios</h3>
+                    </div>
+                    <div class="simple-item">
+                        <div class="simple-icon">🏠</div>
+                        <h3 class="simple-title">Cuidado Familiar según diseño Divino</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Propósitos -->
+            <section class="section">
+                <h2 class="section-title">Propósitos</h2>
+                <div class="grid grid-propositos">
+                    <div class="icon-item">
+                        <div class="icon">🤝</div>
+                        <h3 class="icon-item-title">Compañerismo</h3>
+                    </div>
+                    <div class="icon-item">
+                        <div class="icon">📢</div>
+                        <h3 class="icon-item-title">Evangelismo</h3>
+                    </div>
+                    <div class="icon-item">
+                        <div class="icon">📖</div>
+                        <h3 class="icon-item-title">Discipulado</h3>
+                    </div>
+                    <div class="icon-item">
+                        <div class="icon">🙏</div>
+                        <h3 class="icon-item-title">Ministerio</h3>
+                    </div>
+                    <div class="icon-item">
+                        <div class="icon">🎵</div>
+                        <h3 class="icon-item-title">Adoración</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ministerios -->
+            <section class="section">
+                <h2 class="section-title">Ministerios</h2>
+                <div class="grid grid-ministerios">
+                    <div class="simple-item">
+                        <div class="simple-icon">👥</div>
+                        <h3 class="simple-title">Grupos de crecimiento integral (GCI)</h3>
+                    </div>
+                    <div class="simple-item">
+                        <div class="simple-icon">📚</div>
+                        <h3 class="simple-title">Escuela dominical</h3>
+                    </div>
+                    <div class="simple-item">
+                        <div class="simple-icon">🎯</div>
+                        <h3 class="simple-title">Jóvenes</h3>
+                    </div>
+                    <div class="simple-item">
+                        <div class="simple-icon">📱</div>
+                        <h3 class="simple-title">Comunicaciones</h3>
+                    </div>
+                    <div class="simple-item">
+                        <div class="simple-icon">💐</div>
+                        <h3 class="simple-title">Ministerio de damas</h3>
+                    </div>
+                    <div class="simple-item">
+                        <div class="simple-icon">🌍</div>
+                        <h3 class="simple-title">Misiones</h3>
+                    </div>
+                    <div class="simple-item">
+                        <div class="simple-icon">👋</div>
+                        <h3 class="simple-title">Recepción de nuevos</h3>
+                    </div>
+                    <div class="simple-item">
+                        <div class="simple-icon">🚪</div>
+                        <h3 class="simple-title">Ujieres</h3>
+                    </div>
+                    <div class="simple-item">
+                        <div class="simple-icon">🎤</div>
+                        <h3 class="simple-title">Alabanza</h3>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p class="footer-text">© 2024 Iglesia - Ser y hacer discípulos. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
